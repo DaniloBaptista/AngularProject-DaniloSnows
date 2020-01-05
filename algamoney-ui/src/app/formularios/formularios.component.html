@@ -1,0 +1,57 @@
+<div class="container">
+
+  {{ cliente | json }}
+
+  <div *ngIf="usuarioForm.invalid && usuarioForm.dirty" class="alert alert-danger">
+     Preencha todos os campos corretamente.
+  </div>
+
+  <form autocomplete="off" #usuarioForm="ngForm"
+     (ngSubmit)="salvar(usuarioForm)">
+     <div class="form-group"
+      [class.has-danger]="nome.invalid && nome.touched">
+       <label class="form-control-label">Nome</label>
+       <input type="text" class="form-control" name="nome"
+       [(ngModel)]="cliente.nome" required minlength="10" #nome="ngModel">
+       <br>
+       <!--Touched: {{ nome.touched }} <br>
+       Pristine: {{ nome.pristine }} <br>
+       Dirty: {{ nome.dirty }}
+         Algumas propriedades, o touched é pra ja tocado, o pristine é pra intacto
+         o dirty é quando ja foi mexido, que está sujo.
+     -->
+
+       <div *ngIf="nome.hasError('required') && nome.touched"
+       class="form-control-feedback" >Informe um nome</div>
+       <div *ngIf="nome.hasError('minlength') && nome.touched"
+       class="form-control-feedback" >O nome deve ser completo</div>
+
+     </div>
+
+     <div class="form-group"
+      [class.has-danger]="email.invalid && email.touched">
+       <label class="form-control-label">E-mail</label>
+       <input type="text" class="form-control" name="email"
+       [(ngModel)]="cliente.email" required email #email="ngModel"   style="width: 95px">
+       <div *ngIf="email.hasError('required') && email.touched"
+       class="form-control-feedback">Informe um e-mail válido</div>
+     </div>
+
+     <div class="form-group"
+            [class.has-danger]="profissao.invalid && profissao.touched">
+       <label class="form-control-label">Profissao</label>
+       <select class="form-control" name="profissao"
+       [(ngModel)]="cliente.profissao" required #profissao="ngModel">
+         <option value="">Selecione</option>
+         <option *ngFor="let profissao of profissoes"
+         [value]="profissao" >{{ profissao }}</option>
+       </select>
+
+       <div *ngIf="profissao.hasError('required') && profissao.touched"
+       class="form-control-feedback">Informe uma profissao</div>
+     </div>
+
+     <button type="submit" class="btn btn-primary"
+     [disabled]="!usuarioForm.valid">Salvar</button>
+</form>
+</div>
