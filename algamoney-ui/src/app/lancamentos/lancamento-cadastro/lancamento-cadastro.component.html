@@ -17,12 +17,12 @@
         [showIcon]="false"
         name="vencimento"
            ngModel #vencimento="ngModel" required minlength="5"></p-calendar>
-
+        <!--validacao do formulario
         <app-message [control]="vencimento" error="required"
         text="Informe uma vencimento"></app-message>
         <app-message [control]="vencimento" error="minlength"
         text="Mínimo de {{ vencimento.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ vencimento.errors?.minlength?.actualLength }}"></app-message>
-
+          -->
       </div>
       <div class="ui-g-6 ui-md-3 ui-fluid">
           <label>{{ tipo.value === 'RECEITA' ? 'Recebimento' : 'Pagamento' }}</label>
@@ -36,22 +36,23 @@
           <!--validacao do formulario-->
 
           <!--Criou  o componente MESSAGE-->
-          <app-message [control]="descricao" error="required"
+          <!--<app-message [control]="descricao" error="required"
           text="Informe uma descricao"></app-message>
           <app-message [control]="descricao" error="minlength"
           text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ descricao.errors?.minlength?.actualLength }}"></app-message>
-
+            -->
       </div>
       <div class="ui-g-12 ui-md-3 ui-fluid">
           <label>Valor</label>
           <input pInputText type="text" placeholder="0,00" name="valor" currencyMask
           [options]="{ prefix: '', thousands: '.', decimal: ',', allowNegative: false }"
           ngModel #valor="ngModel" required minlength="5">
-
+<!--
           <app-message [control]="valor" error="required"
           text="Informe uma valor"></app-message>
           <app-message [control]="valor" error="minlength"
           text="Mínimo de {{ valor.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ valor.errors?.minlength?.actualLength }}"></app-message>
+     -->
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
@@ -59,11 +60,12 @@
           <p-dropdown [options]="categorias" placeholder="Selecione"
            #categoria name="categoria"
            ngModel #categoria="ngModel" required minlength="5"></p-dropdown>
-
+<!--
           <app-message [control]="categoria" error="required"
           text="Informe uma categoria"></app-message>
           <app-message [control]="categoria" error="minlength"
           text="Mínimo de {{ categoria.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ categoria.errors?.minlength?.actualLength }}"></app-message>
+        -->
         </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
@@ -72,12 +74,13 @@
            [autoWidth]="false" [filter]="true" #pessoa
            #pessoa name="pessoa"
            ngModel #pessoa="ngModel" required minlength="5"></p-dropdown>
-
+<!--
            <app-message [control]="pessoa" error="required"
            text="Informe uma pessoa"></app-message>
            <app-message [control]="pessoa" error="minlength"
            text="Mínimo de {{ pessoa.errors?.minlength?.requiredLength }} caracteres. Você digitou apenas {{ pessoa.errors?.minlength?.actualLength }}"></app-message>
-      </div>
+     -->
+       </div>
 
       <div class="ui-g-12 ui-fluid">
           <label>Observacao</label>
